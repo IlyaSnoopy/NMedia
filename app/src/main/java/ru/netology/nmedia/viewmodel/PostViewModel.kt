@@ -40,6 +40,10 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         edited.value = post
     }
 
+    fun editClear() {
+        edited.value = empty
+    }
+
     fun saveContent() {
         edited.value?.let {
             repository.save(it)
