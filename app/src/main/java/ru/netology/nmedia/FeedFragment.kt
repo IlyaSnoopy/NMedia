@@ -26,13 +26,14 @@ class FeedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)
-        val binding = FragmentFeedBinding.inflate(inflater,container, false)
+        val binding = FragmentFeedBinding.inflate(inflater, container, false)
 
 
-        val adapter = PostAdapter(object : OnInteractionListener{
+        val adapter = PostAdapter(object : OnInteractionListener {
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
             }
+
             override fun onShare(post: Post) {
                 val intent = Intent().apply {
                     action = Intent.ACTION_SEND
@@ -62,7 +63,10 @@ class FeedFragment : Fragment() {
                 val bundle = Bundle().apply {
                     putLong("postId", post.id)
                 }
-                findNavController().navigate(R.id.action_feedFragment_to_postDetailsFragment, bundle)
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_postDetailsFragment,
+                    bundle
+                )
             }
 
         })
@@ -74,13 +78,13 @@ class FeedFragment : Fragment() {
 
 
 
-        viewModel.edited.observe(viewLifecycleOwner) {post ->
+        viewModel.edited.observe(viewLifecycleOwner) { post ->
             if (post.id == 0L) {
                 return@observe
             }
         }
 
-        binding.add.setOnClickListener{
+        binding.add.setOnClickListener {
             viewModel.editClear()
             findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
         }

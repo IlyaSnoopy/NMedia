@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
-import ru.netology.nmedia.R
 import ru.netology.nmedia.EditPostFragment.Companion.edit
 import ru.netology.nmedia.NewPostFragment.Companion.textArg
+import ru.netology.nmedia.R
 
 class AppActivity : AppCompatActivity(R.layout.activity_app) {
     override fun onCreate(savedInstanceState: Bundle?) {

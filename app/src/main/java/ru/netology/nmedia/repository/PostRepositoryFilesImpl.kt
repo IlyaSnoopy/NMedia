@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import ru.netology.nmedia.dto.Post
-import java.net.FileNameMap
 
 class PostRepositoryFilesImpl(private val context: Context) : PostRepository {
 
@@ -15,6 +14,7 @@ class PostRepositoryFilesImpl(private val context: Context) : PostRepository {
         private val type = TypeToken.getParameterized(List::class.java, Post::class.java).type
         private const val FILENAME = "posts.json"
     }
+
     private var nextId = 1L
     private var posts = emptyList<Post>()
         set(value) {
