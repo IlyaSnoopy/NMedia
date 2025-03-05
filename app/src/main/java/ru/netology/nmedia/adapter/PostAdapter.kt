@@ -19,6 +19,11 @@ class PostAdapter(
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val post = getItem(position)
+        holder.bind(post)
+
+        holder.itemView.setOnClickListener {
+            onInteractionListener.onPostClick(post)
+        }
     }
 }

@@ -58,6 +58,13 @@ class FeedFragment : Fragment() {
                 startActivity(intent)
             }
 
+            override fun onPostClick(post: Post) {
+                val bundle = Bundle().apply {
+                    putLong("postId", post.id)
+                }
+                findNavController().navigate(R.id.action_feedFragment_to_postDetailsFragment, bundle)
+            }
+
         })
 
         binding.main.adapter = adapter
