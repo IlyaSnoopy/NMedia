@@ -92,14 +92,17 @@ class PostDetailsFragment : Fragment() {
         }
 
         post.video?.let { videoUrl ->
-            binding.videoCard.visibility = View.VISIBLE
-            binding.videoCard.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
-                startActivity(intent)
-            }
-            binding.playButton.setOnClickListener {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
-                startActivity(intent)
+            if (videoUrl.isNotEmpty()) {
+                binding.videoCard.visibility = View.VISIBLE
+                binding.videoCard.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+                    startActivity(intent)
+                }
+            } else {
+                binding.playButton.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoUrl))
+                    startActivity(intent)
+                }
             }
         } ?: run {
             binding.videoCard.visibility = View.GONE

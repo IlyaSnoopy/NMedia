@@ -48,7 +48,6 @@ class PostRepositoryFilesImpl(private val context: Context) : PostRepository {
             posts = posts.map {
                 if (it.id != post.id) it else it.copy(content = post.content)
             }
-
         }
         data.value = posts
     }

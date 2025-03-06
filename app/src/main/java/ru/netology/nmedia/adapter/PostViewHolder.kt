@@ -56,15 +56,21 @@ class PostViewHolder(
             }
 
             post.video?.let { videoUrl ->
-                videoCard.visibility = View.VISIBLE
-                videoCard.setOnClickListener {
-                    onInteractionListener.onVideoClick(videoUrl)
-                }
-                playButton.setOnClickListener {
-                    onInteractionListener.onVideoClick(videoUrl)
+                if (videoUrl.isNotEmpty()) {
+                    videoCard.visibility = View.VISIBLE
+                    videoCard.setOnClickListener {
+                        onInteractionListener.onVideoClick(videoUrl)
+                    }
+                    playButton.setOnClickListener {
+                        onInteractionListener.onVideoClick(videoUrl)
+                    }
+                } else {
+                    videoCard.visibility = View.GONE
+                    playButton.visibility = View.GONE
                 }
             } ?: run {
                 videoCard.visibility = View.GONE
+                playButton.visibility = View.GONE
             }
         }
     }
